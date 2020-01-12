@@ -3,6 +3,9 @@ MAINTAINER "wonnyyyy@gmail.com"
 
 EXPOSE 8081
 
-ADD 
+#war 파일 deploy
+COPY build/libs/spring-boot-sample-web-ui.war /app/spring-boot-sample-web-ui/spring-boot-sample-web-ui.war
 
-CMD
+CMD ["java", "-jar", "/spring-boot-sample-web-ui.war"] 
+
+
