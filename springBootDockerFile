@@ -1,0 +1,8 @@
+FROM openjdk:8
+MAINTAINER "wonnyyyy@gmail.com"
+
+EXPOSE 8081
+
+ADD 
+
+CMD
