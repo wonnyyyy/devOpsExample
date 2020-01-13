@@ -11,10 +11,11 @@ PROFILE=$1
 if [ $# -ne 1 ]
 then
     echo "                                                               "
-    echo "---------------------------------------------------------------"
-    echo "[ERROR] Gradle build requires arguments. Please check the usage"
-    echo "---------------------------------------------------------------"
-    echo "[Usage]: gradle_build.sh [profile]                             "
+    echo "-----------------------------------------------------------------"
+    echo "[ERROR] Gradle build requires an argument. Please check the usage"
+    echo "-----------------------------------------------------------------"
+    echo "[Usage]: gradle_build.sh -Pprofile=[profile]                     "
+    echo "profile: local, dev, prod                                        "
     exit 1
 else
     echo "                                                               "

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "--------------------------------------------"
-echo "[Docker] Start building Nginx Container!    "
-echo "--------------------------------------------"
+echo "----------------------------------------------"
+echo "[Docker] Start building docker image of Nginx!"
+echo "----------------------------------------------"
 
 DOCKER_FILE=nginxDockerFile
 
 #docker container build 
-docker build --no-cache -f ${DOCKER_FILE} -t spring-boot-sample-web-ui/nginx:1 
+sudo docker build -f ${DOCKER_FILE} -t myservice/nginx:1 . 

@@ -1,7 +1,9 @@
-FROM nginx
+FROM nginx:alpine
 
-#현재 프로젝트 디렉토리에서 컨테이너 디렉토리로 nginx.conf copy
+MAINTAINER leehw <wonnyyyy@gmail.com>
+
+RUN apk update && apk add curl
+
+#Host 디렉토리에서 컨테이너 디렉토리로 nginx.conf copy
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 
-#실행 command
-CMD ["nginx"]

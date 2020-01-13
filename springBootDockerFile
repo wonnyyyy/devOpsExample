@@ -1,11 +1,19 @@
-FROM openjdk:8
-MAINTAINER "wonnyyyy@gmail.com"
+FROM openjdk:8-jdk-alpine
 
-EXPOSE 8081
+MAINTAINER leehw <wonnyyyy@gmail.com>
 
-#war 파일 deploy
-COPY build/libs/spring-boot-sample-web-ui.war /app/spring-boot-sample-web-ui/spring-boot-sample-web-ui.war
+RUN apk update && apk add curl
 
-CMD ["java", "-jar", "/spring-boot-sample-web-ui.war"] 
+VOLUME /tmp
+
+#변수선언
+ARG WAR_FILE=build/libs/spring-boot-sample-web-ui.war
+
+#Host 디렉토리에서 컨테이너 디렉토리로 war 파일 copy
+COPY ${WAR_FILE} spring-boot-sample-web-ui.war
+
+#EXPOSE 8080
+
+ENTRYPOINT ["sh", "-c", "java -jar /spring-boot-sample-web-ui.war"] 
 
 
