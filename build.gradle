@@ -61,11 +61,10 @@ sourceSets {
 	}
 }
 
-
 //bootWar task
 bootWar {
-	archiveFileName = 'spring-boot-sample-web-ui.war'
-	archiveVersion = ext.appVersion
+  baseName = 'spring-boot-sample-web-ui'
+  version = appVersion
 }
 
 //use systemProperties in bootRun task

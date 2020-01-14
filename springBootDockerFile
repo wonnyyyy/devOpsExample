@@ -2,17 +2,19 @@ FROM openjdk:8-jdk-alpine
 
 MAINTAINER leehw <wonnyyyy@gmail.com>
 
+#build argument
+ARG APP_VERSION=1.0
+ARG WAR_PATH=build/libs
+ARG WAR_FILE=spring-boot-sample-web-ui
+
 RUN apk update && apk add curl
 
 VOLUME /tmp
 
-#변수선언
-ARG WAR_FILE=build/libs/spring-boot-sample-web-ui.war
-
 #Host 디렉토리에서 컨테이너 디렉토리로 war 파일 copy
-COPY ${WAR_FILE} spring-boot-sample-web-ui.war
+COPY ${WAR_PATH}/${WAR_FILE}-${APP_VERSION}.war spring-boot-sample-web-ui.war
 
-#EXPOSE 8080
+EXPOSE 8080
 
 ENTRYPOINT ["sh", "-c", "java -jar /spring-boot-sample-web-ui.war"] 
 

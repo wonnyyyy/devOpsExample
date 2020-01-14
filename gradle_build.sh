@@ -1,40 +1,44 @@
 #! /bin/bash
-echo "--------------------------------------------------------------"
-echo " Build Web Application 'spring-boot-sample-web-ui' by Gradle  "
-echo "--------------------------------------------------------------"
-echo "                                                              " 
+echo "----------------------------------------------------------------"
+echo " Building Web Application 'spring-boot-sample-web-ui' by Gradle "
+echo "----------------------------------------------------------------"
+echo "                                                                " 
 
-#variables
+#define variables
 PROFILE=$1
+APP_VERSION=$2
 
-#arguments 입력 확인
-if [ $# -ne 1 ]
+
+#check arguments
+if [ $# -ne 2 ]
 then
-    echo "                                                               "
-    echo "-----------------------------------------------------------------"
-    echo "[ERROR] Gradle build requires an argument. Please check the usage"
-    echo "-----------------------------------------------------------------"
-    echo "[Usage]: gradle_build.sh -Pprofile=[profile]                     "
-    echo "profile: local, dev, prod                                        "
+    echo "                                                                   "
+    echo "-------------------------------------------------------------------"
+    echo "[ERROR] Gradle build requires arguments. Please check the usage    "
+    echo "-------------------------------------------------------------------"
+    echo "[Usage] gradle_build.sh -Pprofile=[profile] -PappVersion=[version] "
+    echo " - profile   : local, dev, prod                                    "
+    echo " - appVersion: 1.0, 1.1, 1.2....                                   "
     exit 1
 else
-    echo "                                                               "
-    echo "[Step1] Start synchronizing resources from Github              "
-    echo "---------------------------------------------------------------"
+    echo "                                                                   "
+    echo "[Step1] Start synchronizing resources from Github                  "
+    echo "-------------------------------------------------------------------"
 fi
 
-#source dir로 이동
+#move to source dir
 cd /app/devOpsExample
 
-#source synchronize
+#synchronize resources from remote git repository
 git pull
 
-sleep 20 
+sleep 10
 
-#gradle build 수행 
+#build web application by using gradle
 echo "                                                                  "
 echo "[Step2] Start building web application 'spring-boot-sample-web-ui'"
-echo " -Build profile: $1                                               "
+echo " -profile   : $1                                                  "
+echo " -appVersion: $2                                                  "
 echo "------------------------------------------------------------------"
 
-./gradlew clean bootWar -Pprofile=${PROFILE}
+./gradlew clean bootWar -Pprofile=${PROFILE} -PappVersion=${APP_VERSION}

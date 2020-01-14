@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx1: 
-    image: 'myservice/nginx:1'
+    image: 'myservice/nginx:1.0'
     ports:
     - 80:80
     restart: always
@@ -13,22 +13,22 @@ services:
     tty: true
 
   springboot1:
-    image: 'myservice/springboot:1'
+    image: 'myservice/springboot:1.0'
     healthcheck:
       test: ["CMD", "curl", "-f", "http://locahost:8080/checkHealth"]
       interval: 30s
       timeout: 15s
       retries: 5
     ports:
-    - 5000:8080
+    - 5001:8080
       
   springboot2:
-    image: 'myservice/springboot:2'
+    image: 'myservice/springboot:1.0'
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/checkHealth"]
       interval: 30s
       timeout: 15s
       retries: 5
     ports:
-    - 5001:8080
+    - 5002:8080
 
