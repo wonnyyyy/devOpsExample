@@ -46,8 +46,10 @@ dependencies {
     testImplementation  'org.springframework.boot:spring-boot-starter-test:2.1.4.RELEASE'
 }
 
-//profile 별(local, dev, prod) 설정 적용
+//profile: local, dev, prod)
 ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
+//application version
+appVersion= (!project.hasProperty('appVersion') || !appVersion) ? '1.0' : appVersion
 
 sourceSets {
 	main {
