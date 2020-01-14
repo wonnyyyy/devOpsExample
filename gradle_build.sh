@@ -18,7 +18,7 @@ then
     echo "-------------------------------------------------------------------"
     echo "[Usage] gradle_build.sh -Pprofile=[profile] -PappVersion=[version] "
     echo " - profile   : local, dev, prod                                    "
-    echo " - appVersion: 1.0, 1.1, 1.2....                                   "
+    echo " - appVersion: v1, v2 ...                                          "
     exit 1
 else
     echo "                                                                   "

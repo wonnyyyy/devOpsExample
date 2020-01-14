@@ -28,7 +28,7 @@ then
    echo " -start a docker stack '${STACK_NAME}'                          "
    echo "----------------------------------------------------------------"
 
-   docker stack deploy -c ${CONFIG_FILE}  --resolve-image=always ${STACK_NAME}
+   docker stack deploy -c ${CONFIG_FILE} --resolve-image=always ${STACK_NAME}
 
 
 elif [ "${mode}" = "stop" ]

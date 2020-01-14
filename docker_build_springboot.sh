@@ -14,7 +14,7 @@ then
   echo "[ERROR] Docker build requires an argument. Please check the usage"
   echo "-----------------------------------------------------------------"
   echo "[Usage] docker_build_springboot.sh [appVersion]                  "
-  echo " - appVersion: 1.0, 1.1, 1.2 ...                                 "
+  echo " - appVersion: v1, v2 ...                                        "
   exit 1
 else
   echo "[Step1] Start building docker image of spring-boot web application"
@@ -25,4 +25,4 @@ fi
 APP_VERSION=$1
 
 #build a docker image
-docker build --no-cache -f ${DOCKER_FILE} --build-arg APP_VERSION=${APP_VERSION} -t myservice/springboot:${APP_VERSION} .
+docker build --no-cache -f ${DOCKER_FILE} -t myservice/springboot:${APP_VERSION} .

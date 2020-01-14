@@ -27,7 +27,7 @@ services:
     - webnet    
 
   springboot1:
-    image: 'myservice/springboot:v1'
+    image: 'myservice/springboot:v2'
     healthcheck:
       test: ["CMD", "curl", "-f", "http://locahost:8080/checkHealth"]
       interval: 30s
@@ -46,12 +46,12 @@ services:
     - webnet     
 
   springboot2:
-    image: 'myservice/springboot:v1'
+    image: 'myservice/springboot:v2'
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/checkHealth"]
       interval: 30s
       timeout: 15s
-      retries: 105
+      retries: 10
     ports:
     - 5002:8080
     deploy:

@@ -7,4 +7,4 @@ echo "----------------------------------------------"
 DOCKER_FILE=nginxDockerFile
 
 #docker container build 
-docker build -f ${DOCKER_FILE} -t myservice/nginx:1.0 . 
+docker build -f ${DOCKER_FILE} -t myservice/nginx:v1 . 
