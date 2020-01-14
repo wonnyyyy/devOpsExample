@@ -2,6 +2,11 @@ version: '3'
 services:
   nginx1: 
     image: 'myservice/nginx:1.0'
+    healthcheck:
+      test: ["CMD", "cat", "/var/run/nginx.pid"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
     ports:
     - 80:80
     restart: always
@@ -11,6 +16,14 @@ services:
     - springboot1
     - springboot2
     tty: true
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+        
 
   springboot1:
     image: 'myservice/springboot:1.0'
@@ -21,7 +34,15 @@ services:
       retries: 5
     ports:
     - 5001:8080
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
       
+
   springboot2:
     image: 'myservice/springboot:1.0'
     healthcheck:
@@ -31,4 +52,11 @@ services:
       retries: 5
     ports:
     - 5002:8080
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
 

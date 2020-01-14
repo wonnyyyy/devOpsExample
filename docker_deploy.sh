@@ -25,4 +25,4 @@ fi
 APP_VERSION=$1
 
 #build a docker image
-docker build --no-cache -f ${DOCKER_FILE} --build-arg APP_VERSION=${APP_VERSION} -t myservice/springboot:${APP_VERSION} .
+sudo docker build --no-cache -f ${DOCKER_FILE} --build-arg APP_VERSION=${APP_VERSION} -t myservice/springboot:${APP_VERSION} .
