@@ -54,7 +54,9 @@
        - 스크립트 실행: $ ./docker_build_springboot.sh v2
          > v2: v2 버전의 docker image 빌드
                  
-    
+ - 6) 어플리케이션 healt check
+       - curl http://localhost/checkHealth
+       - 정상 서비스 중인 경우 {"status":"UP"} json 데이터 반환
     
     
     
