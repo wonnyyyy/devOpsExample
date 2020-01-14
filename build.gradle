@@ -21,20 +21,21 @@ buildscript {
 }
 
 
-//plugin 적용
+//plugin settings
 plugins {
 	id 'java-library'
 	id 'war'	
 	id 'org.springframework.boot' version '2.1.4.RELEASE'
 }
 
+//java version settings
 java {
 	sourceCompatibility = JavaVersion.VERSION_1_8
 	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 
-//repository 및 의존 라이브러리 설정
+//repository and library dependencies settings
 repositories {
     mavenCentral()
 }
@@ -49,8 +50,9 @@ dependencies {
 //profile: local, dev, prod)
 ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
 //application version
-appVersion= (!project.hasProperty('appVersion') || !appVersion) ? '1.0' : appVersion
+ext.appVersion= (!project.hasProperty('appVersion') || !appVersion) ? '1.0' : appVersion
 
+//apply profiles
 sourceSets {
 	main {
 		resources {
@@ -59,7 +61,14 @@ sourceSets {
 	}
 }
 
-//실행 task 수행 시, systemProperties 사용
+
+//bootWar task
+bootWar {
+	archiveFileName = 'spring-boot-sample-web-ui.war'
+	archiveVersion = ext.appVersion
+}
+
+//use systemProperties in bootRun task
 bootRun {
 	systemProperties = System.properties
 }
