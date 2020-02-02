@@ -63,5 +63,25 @@ services:
         condition: on-failure
     networks:
     - webnet
+
+  springboot3:
+    image: 'myservice/sprinboot:v2'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/checkHealth"]
+      interval: 30s
+      timeout: 15s
+      retries: 10
+    ports:
+    - 5003:8080
+    deploy:
+      mode: replicated
+      replicas: 2
+    update_config:
+      parallelism: 1
+    restart_policy:
+      condition: on-failure
+    networks:
+    - webnet
+
 networks:
   webnet:
