@@ -9,8 +9,6 @@ ARG WAR_FILE=spring-boot-sample-web-ui
 
 RUN apk update && apk add curl
 
-VOLUME /tmp
-
 #Host 디렉토리에서 컨테이너 디렉토리로 war 파일 copy
 COPY ${WAR_PATH}/${WAR_FILE}-${APP_VERSION}.war spring-boot-sample-web-ui.war
 
